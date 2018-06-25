@@ -36,7 +36,7 @@ function noop(){}
  * @param {Function} optional callback
  */
 
-function jsonp(url, opts, fn){
+function jsonp(url, inopts, fn){
    if ('function' == typeof inopts) {
     fn = inopts;
     inopts = null;
