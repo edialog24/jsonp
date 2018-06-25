@@ -37,11 +37,11 @@ function noop(){}
  */
 
 function jsonp(url, opts, fn){
-  if ('function' == typeof opts) {
-    fn = opts;
-    opts = {};
+   if ('function' == typeof inopts) {
+    fn = inopts;
+    inopts = null;
   }
-  if (!opts) opts = {};
+  var opts = inopts ? inopts : {};
 
   var prefix = opts.prefix || '__jp';
 
@@ -91,6 +91,9 @@ function jsonp(url, opts, fn){
   // create script
   script = document.createElement('script');
   script.src = url;
+  script.onload = function(e) {
+    if(fn && inopts === null) fn(null,e)
+  }
   script.onerror = function(e) {
     if(fn) fn(e, null);
   }
