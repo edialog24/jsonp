@@ -94,9 +94,9 @@ function jsonp(url, inopts, fn){
   script.onload = function(e) {
     if(fn && inopts === null) fn(null,e)
   }
-  script.onerror = function(e) {
+ /* script.onerror = function(e) {
     if(fn) fn(e, null);
-  }
+  }*/
   target.parentNode.insertBefore(script, target);
 
   return cancel;
